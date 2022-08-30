@@ -104,7 +104,7 @@ restore_custom_cache_directories() {
 
   echo "Loading ${#cache_directories[@]} from cacheDirectories (package.json):"
   echo "DEBUG - COMET"
-  ls -al $cache_dir
+  ls -al "$cache_dir/node/cache"
   for cachepath in "${cache_directories[@]}"; do
     if [ -e "$build_dir/$cachepath" ]; then
       echo "- $cachepath (exists - skipping)"
