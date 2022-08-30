@@ -103,7 +103,8 @@ restore_custom_cache_directories() {
   mapfile -t cache_directories <<< "$3"
 
   echo "Loading ${#cache_directories[@]} from cacheDirectories (package.json):"
-
+  echo "DEBUG - COMET"
+  ls -al $cache_dir
   for cachepath in "${cache_directories[@]}"; do
     if [ -e "$build_dir/$cachepath" ]; then
       echo "- $cachepath (exists - skipping)"
