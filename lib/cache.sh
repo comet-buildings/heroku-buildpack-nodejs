@@ -20,6 +20,11 @@ load_signature() {
 
 get_cache_status() {
   local cache_dir="$1"
+
+  header "DEBUG"
+  echo "cache_dir: $cache_dir"
+  tree --du -h -L 2 $cache_dir
+
   if ! ${NODE_MODULES_CACHE:-true}; then
     echo "disabled"
   elif ! test -d "$cache_dir/node/"; then
