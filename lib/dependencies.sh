@@ -141,7 +141,7 @@ yarn_node_modules() {
   echo "Yarn cache dir : $(yarn cache dir)"
   echo "Installing only from cache..."
   yarn install --production="$production" --frozen-lockfile --ignore-engines --offline 2>&1 || only_cache=0
-  if [ only_cache -eq 1 ]; then
+  if [ $only_cache -eq 1 ]; then
     echo "Successfully installed only from cache"
   else
     echo "Failed to install only from cache"
