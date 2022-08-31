@@ -139,7 +139,13 @@ yarn_node_modules() {
   cd "$build_dir" || return
   echo "Yarn cache dir : $(yarn cache dir)"
   echo "Installing only from cache..."
-  monitor "yarn-install-offline" yarn install --production="$production" --frozen-lockfile --ignore-engines --offline 2>&1 || echo "" && monitor "yarn-install" yarn install --production="$production" --frozen-lockfile --ignore-engines --prefer-offline 2>&1
+  monitor "yarn-install-offline" yarn install --production="$production" --frozen-lockfile --ignore-engines --offline 2>&1
+  if [ $? -eq 0 ]; then
+    echo "Successfully installed only from cache"
+  else
+    echo "Failed to install only from cache"
+    monitor "yarn-install" yarn install --production="$production" --frozen-lockfile --ignore-engines --prefer-offline 2>&1
+  fi
 }
 
 yarn_2_install() {
