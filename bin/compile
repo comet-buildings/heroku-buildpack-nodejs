@@ -365,6 +365,8 @@ cache_build() {
   else
     header "Caching build"
     save_custom_cache_directories "$BUILD_DIR" "$CACHE_DIR" "$cache_directories"
+    echo "cache_dir: $CACHE_DIR"
+    find $CACHE_DIR -maxdepth 3 -type d -exec ls -ld "{}" \;
   fi
   save_signature "$CACHE_DIR"
   meta_time "save-cache-time" "$cache_build_start_time"
