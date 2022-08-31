@@ -139,7 +139,7 @@ yarn_node_modules() {
   cd "$build_dir" || return
   echo "Yarn cache dir : $(yarn cache dir)"
   echo "Installing only from cache..."
-  monitor "yarn-install-offline" yarn install --production="$production" --frozen-lockfile --ignore-engines --offline 2>&1 || echo "Failed ! Installing from with internet connection" && monitor "yarn-install" yarn install --production="$production" --frozen-lockfile --ignore-engines --prefer-offline 2>&1
+  monitor "yarn-install-offline" yarn install --production="$production" --frozen-lockfile --ignore-engines --offline 2>&1 || monitor "yarn-install" yarn install --production="$production" --frozen-lockfile --ignore-engines --prefer-offline 2>&1
 }
 
 yarn_2_install() {
