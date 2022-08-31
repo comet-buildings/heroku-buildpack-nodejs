@@ -278,6 +278,9 @@ restore_cache() {
     fi
   fi
 
+  header "DEBUG"
+  echo "cache_status: $cache_status"
+
   if [[ "$cache_status" == "disabled" ]]; then
     header "Restoring cache"
     echo "Caching has been disabled because NODE_MODULES_CACHE=${NODE_MODULES_CACHE}"
