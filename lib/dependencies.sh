@@ -134,13 +134,14 @@ log_build_scripts() {
 yarn_node_modules() {
   local build_dir=${1:-}
   local production=${YARN_PRODUCTION:-false}
+  local only_cache=true
 
   echo "Installing node modules (yarn.lock)"
   cd "$build_dir" || return
   echo "Yarn cache dir : $(yarn cache dir)"
   echo "Installing only from cache..."
-  yarn install --production="$production" --frozen-lockfile --ignore-engines --offline 2>&1 || :
-  if [ $? -eq 0 ]; then
+  yarn install --production="$production" --frozen-lockfile --ignore-engines --offline 2>&1 || only_cache=false
+  if [ only_cache ]; then
     echo "Successfully installed only from cache"
   else
     echo "Failed to install only from cache"
