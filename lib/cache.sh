@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-set -e
+set -x
 
 create_signature() {
   echo "v2; ${STACK}; $(node --version); $(npm --version); $(yarn --version 2>/dev/null || true); ${PREBUILD}"
