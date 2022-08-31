@@ -281,6 +281,8 @@ restore_cache() {
 
   header "DEBUG"
   echo "cache_status: $cache_status"
+  echo "cache_dir: $CACHE_DIR"
+  find $CACHE_DIR -maxdepth 3 -type d -exec ls -ld "{}" \;
 
   if [[ "$cache_status" == "disabled" ]]; then
     header "Restoring cache"
