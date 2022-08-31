@@ -23,7 +23,7 @@ get_cache_status() {
 
   header "DEBUG"
   echo "cache_dir: $cache_dir"
-  find $cache_dir -maxdepth 2 -type d -exec ls -ld "{}" \;
+  find $cache_dir -maxdepth 3 -type d -exec ls -ld "{}" \;
 
   if ! ${NODE_MODULES_CACHE:-true}; then
     echo "disabled"
